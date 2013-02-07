@@ -109,3 +109,14 @@ defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
 
 defaults write com.apple.terminal "Default Window Settings" -string "Pro"
 defaults write com.apple.terminal "Startup Window Settings" -string "Pro"
+
+###############################################################################
+# Kill affected applications                                                  #
+###############################################################################
+
+for app in "Address Book" "Calendar" "Contacts" "Dashboard" "Dock" "Finder" \
+	"Mail" "Safari" "SizeUp" "SystemUIServer" "Terminal" "Transmission" \
+	"Twitter" "iCal" "iTunes"; do
+	killall "$app" > /dev/null 2>&1
+done
+echo "Done. Note that some of these changes require a logout/restart to take effect."
